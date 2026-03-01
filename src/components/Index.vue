@@ -57,7 +57,7 @@ try {
 
 <template>
   <h1 v-if="role">Welcome, {{ role.toLowerCase() }}</h1>
-   <RouterLink v-if="role == 'Researcher'" to="/create">Create</RouterLink>
+   <RouterLink v-if="role == 'Researcher'" to="/create" class="btn">Create</RouterLink>
    
   <div v-if="!proposals">
     <Loading />

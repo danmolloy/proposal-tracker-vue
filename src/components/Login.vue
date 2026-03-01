@@ -31,21 +31,65 @@ const handleLogin = async () => {
 </script>
 
 <template>
-  <form @submit.prevent="handleLogin">
+  <div class="form">
+  <form @submit.prevent="handleLogin" class="form-el">
     <h1>Login</h1>
-    <div>
-      <input v-model="email" type="email" placeholder="Email" />
-     <input v-model="password" type="password" placeholder="Password" />
+    
+      <input v-model="email" type="email" placeholder="Email"  class="input"/>
+     <input v-model="password" type="password" placeholder="Password" class="input" />
   
     
-      <button type="submit">Submit</button>
-    </div>
+      <button type="submit" class="btn">Submit</button>
+    
 
   </form>
   <div>
     <RouterLink to="/register">Register as a new user</RouterLink>
   </div>
+  </div>
 </template>
 
 <style>
+.form {
+  background-color: white;
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  padding: 1rem;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+border-radius: 6px;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+}
+.form-el {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+.input {
+  margin: 4px;
+  padding: 4px;
+  width: 12rem;
+
+}
+.btn {
+
+  margin: 4px;
+  padding: 4px;
+  width: 8rem;
+  cursor: pointer;
+  background-color: oklch(62.3% 0.214 259.815);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 6px;
+  border-color: oklch(62.3% 0.214 259.815);
+}
+.btn:hover {
+  background-color: oklch(54.6% 0.245 262.881);
+  border-color: oklch(54.6% 0.245 262.881);
+
+}
 </style>

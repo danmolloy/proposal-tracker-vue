@@ -1,26 +1,29 @@
 <script setup>
 import { RouterLink, useRouter } from 'vue-router';
 import { performLogout } from '../../auth';
+import { onMounted, ref, computed } from 'vue';
+
+const token = ref(localStorage.getItem('user-token'))
+
+const isLoggedIn = computed(() => !!token.value)
 
 const router = useRouter();
 
 const onLogout = () => {
     performLogout(router);
      router.push('/login');
-  
 };
+
 
 </script>
 
 <template >
   <div  class="layout">
   <header class="header">
-    <RouterLink to="/">Proposal Tracker</RouterLink>
+    <RouterLink to="/" class="logo">Proposal Tracker</RouterLink>
     <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/login">Login</RouterLink>
-      <RouterLink to="/register">Register</RouterLink>
-          <button @click="onLogout">Log Out</button>
+      <RouterLink v-if="!isLoggedIn" to="/login" class="login-btn">Login</RouterLink>
+          <button v-else @click="onLogout" class="login-btn">Log Out</button>
 
     </nav>
   </header>
@@ -46,24 +49,52 @@ const onLogout = () => {
   position: fixed;
   background-color: white;
   height: 4rem;
-  border-bottom: solid;
-  border-color: black;
   border-width: 1px;
   width: 100vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+}
+.logo {
+  font-size: larger;
+  font-weight: 500;
+  color: black;
 }
 .main {
   margin-top: 4rem;
   padding: 2rem;
   min-height: 100vh -9rem;
-  background-color: antiquewhite;
+  background-color: oklch(97% 0 0);
   flex: 1;
 }
 .footer {
-  background-color: rgb(227, 254, 245);
+  background-color: oklch(87% 0 0);
   position: absolute;
   bottom: 0;
   width: 100vw;
   height: 5rem;
+}
+.login-btn {
+  
+  margin: 4px;
+  padding: 2px;
+  width: 4rem;
+  cursor: pointer;
+  color: oklch(62.3% 0.214 259.815);
+  background-color: white;
+  font-size: 12px;
+  font-weight: 600;
+  border-width: 1px;
+  border-radius: 6px;
+  border-color: oklch(62.3% 0.214 259.815);
+}
+.login-btn:hover {
+  background-color: oklch(94.813% 0.0246 265.623);
+  border-color: oklch(54.6% 0.245 262.881);
+
 }
 
 </style>
