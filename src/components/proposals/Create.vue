@@ -19,7 +19,7 @@ const submit = async () => {
   }
 
   try {
-    const response = await axios.post(`${baseURL}proposals/create`, vals);
+    const response = await axios.post(`${baseURL}/proposals/create`, vals);
     console.log("Saved:", response.data);
     router.push("/");
   } catch (error) {

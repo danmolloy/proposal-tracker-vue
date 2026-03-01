@@ -28,7 +28,7 @@ const statuses = [
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseURL}proposals`);
+    const response = await axios.get(`${baseURL}/proposals`);
     proposals.value = response.data.proposals; // Note the .value for refs
     role.value = response.data.user.role;
   } catch (error) {
@@ -41,7 +41,7 @@ const handleDelete = async (id) => {
   const conf =  confirm("Are you sure you want to delete this proposal?")
   if (conf) {
 try {
-    await axios.delete(`${baseURL}proposals/delete/${id}`);
+    await axios.delete(`${baseURL}/proposals/delete/${id}`);
     proposals.value = proposals.value.filter(p => p.id !== id);
 
     console.log(`Proposal ${id} deleted successfully.`);

@@ -12,7 +12,7 @@ const proposal = ref(null);
 
 onMounted(async () => {
   try {
-    const response = await axios.get(`${baseURL}proposals/detail/${route.params.id}`);
+    const response = await axios.get(`${baseURL}/proposals/detail/${route.params.id}`);
     console.log(JSON.stringify(response))
         proposal.value = response.data;
 
@@ -24,7 +24,7 @@ onMounted(async () => {
 
 const submit = async () => {
   try {
-    const response = await axios.patch(`${baseURL}proposals/edit`, proposal.value);
+    const response = await axios.patch(`${baseURL}/proposals/edit`, proposal.value);
     console.log("Saved:", response.data);
     router.push("/");
   } catch (error) {

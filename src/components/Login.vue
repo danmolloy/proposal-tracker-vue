@@ -10,7 +10,7 @@ const password = ref('');
 
 const handleLogin = async () => {
  try {
-    const response = await axios.post(`${baseURL}login?useCookies=false`, {
+    const response = await axios.post(`${baseURL}/login?useCookies=false`, {
       email: email.value,
       password: password.value
     });
