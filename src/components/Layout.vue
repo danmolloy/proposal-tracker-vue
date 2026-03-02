@@ -67,11 +67,14 @@ const onLogout = () => {
   margin-top: 4rem;
   padding: 2rem;
   min-height: 100vh -9rem;
-  background-color: oklch(97% 0 0);
+  background-color: oklch(98.5% 0.001 106.423);
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .footer {
-  background-color: oklch(87% 0 0);
+  background-color: oklch(97% 0.001 106.424);
   position: absolute;
   bottom: 0;
   width: 100vw;

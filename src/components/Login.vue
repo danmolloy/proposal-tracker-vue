@@ -61,8 +61,15 @@ border-radius: 6px;
 display: flex;
 flex-direction: column;
 align-items: center;
+width: 90vw;
 
 }
+@media only screen and (min-width: 992px) {
+  .form {
+    width: 50vw;
+  }
+}
+
 .form-el {
 display: flex;
 flex-direction: column;
