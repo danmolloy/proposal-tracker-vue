@@ -32,7 +32,7 @@ onMounted(async () => {
     const response = await axios.get(`${baseURL}/proposals`);
     proposals.value = response.data.proposals; // Note the .value for refs
     console.log(JSON.stringify(response.data))
-    role.value = response.data.role;
+    role.value = response.data.user.role;
   } catch (error) {
     console.error("API Error:", error);
 
