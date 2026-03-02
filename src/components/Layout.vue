@@ -1,18 +1,15 @@
 <script setup>
 import { RouterLink, useRouter } from 'vue-router';
-import { performLogout } from '../../auth';
-import { onMounted, ref, computed } from 'vue';
+import { performLogout, token } from '../../auth';
+import { computed } from 'vue';
 
-const token = ref(localStorage.getItem('user-token'))
+const router = useRouter()
 
 const isLoggedIn = computed(() => !!token.value)
 
-const router = useRouter();
-
 const onLogout = () => {
-    performLogout(router);
-     router.push('/login');
-};
+  performLogout(router)
+}
 
 
 </script>

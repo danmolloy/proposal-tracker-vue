@@ -2,6 +2,7 @@
 import { ref } from 'vue';
 import { RouterLink, useRouter } from 'vue-router';
 import axios from 'axios';
+import { setToken } from '../../auth';
 const baseURL = import.meta.env.VITE_BACKEND_URL;
 
 const router = useRouter();
@@ -15,11 +16,8 @@ const handleLogin = async () => {
       password: password.value
     });
 
-    // Save token for persistence
-    localStorage.setItem('user-token', response.data.accessToken);
-    
-    // Immediately set it for future requests
-    axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.accessToken}`;
+    setToken(response.data.accessToken)
+router.push('/')
     
     router.push('/'); 
   } catch (err) {

@@ -1,8 +1,19 @@
-export function performLogout(router) {
-  localStorage.removeItem('user-token');
+import { ref } from 'vue'
+import axios from 'axios'
 
-  delete axios.defaults.headers.common['Authorization'];
+export const token = ref(localStorage.getItem('user-token'))
 
-  
-  window.location.href = '/login';
+export const isLoggedIn = () => !!token.value
+
+export const setToken = (newToken) => {
+  token.value = newToken
+  localStorage.setItem('user-token', newToken)
+  axios.defaults.headers.common['Authorization'] = `Bearer ${newToken}`
+}
+
+export const performLogout = (router) => {
+  token.value = null
+  localStorage.removeItem('user-token')
+  delete axios.defaults.headers.common['Authorization']
+  router.push('/login')
 }
