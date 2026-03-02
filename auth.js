@@ -3,9 +3,6 @@ export function performLogout(router) {
 
   delete axios.defaults.headers.common['Authorization'];
 
-  /* if (router) {
-    router.push('/login');
-  } else {
-    window.location.href = '/login';
-  } */
+  
+  window.location.href = '/login';
 }

@@ -23,23 +23,31 @@ onMounted(async () => {
 
 <template>
   
-  <div v-if="proposal">
-    
-    <h1>Proposal <!-- {{ $route.params.id }} --> </h1>
-    
-    <div>
-      <p>Title:</p>
-      <p>{{ proposal.title }}</p>
+  <div v-if="proposal" class="review-container">
+    <div class="header-actions">
+
+      <h1>Proposal <!-- {{ $route.params.id }} --> </h1>
+          <RouterLink to="/" class="back-link">Back to list</RouterLink>
+
     </div>
-    <div>
-      <p>Description:</p>
-      <p>{{ proposal.description }}</p>
-    </div>
-    <div>
-      <p>Budget:</p>
-      <p>{{ proposal.budget }}</p>
-    </div>
-    <RouterLink to="/">Back to list</RouterLink>
+    <div class="form">
+
+    <div class="proposal-preview">
+      <div class="info-group">
+          <label>Title</label>
+          <p class="static-text">{{ proposal.title }}</p>
+        </div>
+      <div class="info-group">
+          <label>Description</label>
+          <p class="static-text">{{ proposal.description }}</p>
+        </div>
+
+        <div class="info-group">
+          <label>Submitted Budget</label>
+          <p class="static-text">${{ proposal.budget.toLocaleString() }}</p>
+        </div>
+        </div></div>
+
   </div>
   <div v-else>
     <p>Loading proposal details...</p>

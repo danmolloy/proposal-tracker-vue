@@ -31,7 +31,6 @@ onMounted(async () => {
   try {
     const response = await axios.get(`${baseURL}/proposals`);
     proposals.value = response.data.proposals; // Note the .value for refs
-    console.log(JSON.stringify(response.data))
     role.value = response.data.user.role;
   } catch (error) {
     console.error("API Error:", error);
@@ -59,7 +58,7 @@ try {
 
 <template>
   <h1 v-if="role">{{ role == "Researcher" ? "Your Proposals" : "All Proposals" }}</h1>
-   <RouterLink v-if="role == 'Researcher'" to="/create" class="btn">Create</RouterLink>
+   <RouterLink v-if="role == 'Researcher'" to="/create" class="create-btn">Create</RouterLink>
    
   <div v-if="!proposals">
     <Loading />
@@ -104,6 +103,13 @@ try {
 </template>
 
 <style>
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 10rem;
+}
+
 .card-grid {
   display: flex;
   flex-direction: row;
@@ -191,5 +197,43 @@ try {
   padding: 4px 8px;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.create-btn {
+  /* Layout & Spacing */
+  margin: 4px;
+  padding: 6px 16px; /* Increased padding for a better 'pill' or 'block' feel */
+  min-width: 5rem;    /* min-width is safer than fixed width */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Typography */
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none; /* In case it's a RouterLink */
+  
+  /* Colors & Borders */
+  color: oklch(62.3% 0.214 259.815);
+  background-color: white;
+  border: 1.5px solid oklch(62.3% 0.214 259.815);
+  border-radius: 6px;
+
+  /* Animation */
+  transition: all 0.2s ease-in-out;
+}
+
+.create-btn:hover {
+  /* Subtle background tint and deeper border */
+  background-color: oklch(96% 0.02 260); 
+  border-color: oklch(54.6% 0.245 262.881);
+  color: oklch(54.6% 0.245 262.881);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.create-btn:active {
+  /* Slight push effect when clicked */
+  transform: scale(0.96);
 }
 </style>

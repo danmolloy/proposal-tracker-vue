@@ -57,6 +57,7 @@ const onLogout = () => {
   padding-right: 1rem;
   padding-left: 1rem;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  z-index: 10;
 }
 .logo {
   font-size: larger;
@@ -65,8 +66,10 @@ const onLogout = () => {
 }
 .main {
   margin-top: 4rem;
-  padding: 2rem;
   min-height: 100vh -9rem;
+  padding-top: 2rem;
+  height:fit-content;
+  padding-bottom: 6rem;
   background-color: oklch(98.5% 0.001 106.423);
   flex: 1;
   display: flex;
@@ -81,23 +84,41 @@ const onLogout = () => {
   height: 5rem;
 }
 .login-btn {
-  
+  /* Layout & Spacing */
   margin: 4px;
-  padding: 2px;
-  width: 4rem;
+  padding: 6px 16px; /* Increased padding for a better 'pill' or 'block' feel */
+  min-width: 5rem;    /* min-width is safer than fixed width */
   cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Typography */
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none; /* In case it's a RouterLink */
+  
+  /* Colors & Borders */
   color: oklch(62.3% 0.214 259.815);
   background-color: white;
-  font-size: 12px;
-  font-weight: 600;
-  border-width: 1px;
+  border: 1.5px solid oklch(62.3% 0.214 259.815);
   border-radius: 6px;
-  border-color: oklch(62.3% 0.214 259.815);
-}
-.login-btn:hover {
-  background-color: oklch(94.813% 0.0246 265.623);
-  border-color: oklch(54.6% 0.245 262.881);
 
+  /* Animation */
+  transition: all 0.2s ease-in-out;
+}
+
+.login-btn:hover {
+  /* Subtle background tint and deeper border */
+  background-color: oklch(96% 0.02 260); 
+  border-color: oklch(54.6% 0.245 262.881);
+  color: oklch(54.6% 0.245 262.881);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.login-btn:active {
+  /* Slight push effect when clicked */
+  transform: scale(0.96);
 }
 
 </style>
