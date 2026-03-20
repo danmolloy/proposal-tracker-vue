@@ -3,6 +3,7 @@
 Proposal Tracker is a responsive SPA built with Vue.js. It provides a dedicated interface for Proposal Tracker API.
 
 ## Tech Stack
+
 - Framework: Vue 3 (Composition API)
 - Routing: Vue Router (for role-based navigation guards)
 - HTTP Client: Axios (configured with interceptors for Bearer Tokens)
