@@ -1,4 +1,5 @@
 # Proposal Tracker
+
 Proposal Tracker is a responsive SPA built with Vue.js. It provides a dedicated interface for Proposal Tracker API.
 
 ## Tech Stack
